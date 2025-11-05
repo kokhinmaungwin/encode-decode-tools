@@ -25,7 +25,7 @@ body {
 }
 
 /* Input / output areas */
-textarea#inputText {
+textarea#input {
   width: 100%;
   min-height: 140px;
   padding: 12px;
@@ -86,7 +86,7 @@ button {
 <body>
 <div class="container">
 <h2>Advanced Encode / Decode Tool</h2>  
-<textarea id="inputText" placeholder="Enter text here..."></textarea>
+<textarea id="input" placeholder="Enter text here..."></textarea>
 <button onclick="base64Encode()">Base64 Encode</button>
 <button onclick="base64Decode()">Base64 Decode</button>
 <button onclick="urlEncode()">URL Encode</button> 
@@ -100,7 +100,7 @@ button {
 <div class="result" id="output"></div>
 </div>
 <script>
-function getInput(){ return document.getElementById("inputText").value; }
+function getInput(){ return document.getElementById("input").value; }
 function setOutput(data){ document.getElementById("output").innerText = data; }
 
 // Base64
@@ -152,9 +152,9 @@ function selectAndCopyOutputSilent() {
 }
 // Clear
 function clearAll() {
-  const inputText = document.getElementById("inputText");
+  const input = document.getElementById("input");
   const output = document.getElementById("output");
-  if (inputText) inputText.textContent = "";  
+  if (input) input.textContent = "";  
   if (output) output.textContent = "";    
 }
 
