@@ -85,10 +85,21 @@ button {
 </head>
 <body>
 <div class="container">
-  <h2>Advanced Encode / Decode Tool</h2>  <textarea id="inputText" placeholder="Enter text here..."></textarea><button onclick="base64Encode()">Base64 Encode</button> <button onclick="base64Decode()">Base64 Decode</button> <button onclick="urlEncode()">URL Encode</button> <button onclick="urlDecode()">URL Decode</button> <button onclick="md5Hash()">MD5 Hash</button> <button onclick="sha256Hash()">SHA256 Hash</button> <button onclick="toUpperCaseText()">UPPERCASE</button> <button onclick="toLowerCaseText()">lowercase</button> <button onclick="copyOutput()">Copy Output</button>
-
-  <div class="result" id="output"></div>
-</div><script>
+<h2>Advanced Encode / Decode Tool</h2>  
+<textarea id="inputText" placeholder="Enter text here..."></textarea>
+<button onclick="base64Encode()">Base64 Encode</button>
+<button onclick="base64Decode()">Base64 Decode</button>
+<button onclick="urlEncode()">URL Encode</button> 
+<button onclick="urlDecode()">URL Decode</button> 
+<button onclick="md5Hash()">MD5 Hash</button> 
+<button onclick="sha256Hash()">SHA256 Hash</button>
+<button onclick="toUpperCaseText()">UPPERCASE</button> 
+<button onclick="toLowerCaseText()">lowercase</button> 
+<button onclick="selectAndCopyOutputSilent()">Copy</button>
+<button onclick="clearOutput()">Clear</button>
+<div class="result" id="output"></div>
+</div>
+<script>
 function getInput(){ return document.getElementById("inputText").value; }
 function setOutput(data){ document.getElementById("output").innerText = data; }
 
@@ -117,10 +128,36 @@ function toUpperCaseText(){ setOutput(getInput().toUpperCase()); }
 function toLowerCaseText(){ setOutput(getInput().toLowerCase()); }
 
 // Copy
-function copyOutput(){
-  const text = document.getElementById("output").innerText;
-  navigator.clipboard.writeText(text);
-  alert("✅ Copied!");
+function selectAndCopyOutputSilent() {
+  const outputEl = document.getElementById("output");
+
+  if (!outputEl) return;
+
+  if (outputEl.select) {
+    outputEl.select();
+    outputEl.setSelectionRange(0, 99999); // mobile support
+  } else if (window.getSelection) {
+    const range = document.createRange();
+    range.selectNodeContents(outputEl);
+    const sel = window.getSelection();
+    sel.removeAllRanges();
+    sel.addRange(range);
+  }
+
+  try {
+    document.execCommand('copy');
+  } catch (e) {
+    // silently fail
+  }
+}
+// Clear
+function clearOutput() {
+  const outputEl = document.getElementById("output");
+  if (outputEl.value !== undefined) {
+    outputEl.value = "";
+  } else {
+    outputEl.textContent = "";
+  }
 }
 
 /* MD5 Library */
