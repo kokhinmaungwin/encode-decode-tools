@@ -153,10 +153,8 @@ function selectAndCopyOutputSilent() {
 // Clear
 function clearOutput() {
   const outputEl = document.getElementById("output");
-  if (outputEl.value !== undefined) {
-    outputEl.value = "";
-  } else {
-    outputEl.textContent = "";
+  if (outputEl) {
+    outputEl.textContent = "";  
   }
 }
 
