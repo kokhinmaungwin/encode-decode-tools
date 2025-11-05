@@ -153,7 +153,7 @@ function selectAndCopyOutputSilent() {
 // Clear
 function clearAll() {
   document.getElementById("input").value = "";
-  document.getElementById("output").value = "";
+  document.getElementById("output").innerText = "";
   window.getSelection().removeAllRanges();
 }
 
