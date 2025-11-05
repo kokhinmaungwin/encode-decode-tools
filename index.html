@@ -96,7 +96,7 @@ button {
 <button onclick="toUpperCaseText()">UPPERCASE</button> 
 <button onclick="toLowerCaseText()">lowercase</button> 
 <button onclick="selectAndCopyOutputSilent()">Copy</button>
-<button onclick="clearOutput()">Clear</button>
+<button onclick="clearText()">Clear</button>
 <div class="result" id="output"></div>
 </div>
 <script>
@@ -151,11 +151,10 @@ function selectAndCopyOutputSilent() {
   }
 }
 // Clear
-function clearOutput() {
-  const outputEl = document.getElementById("output");
-  if (outputEl) {
-    outputEl.textContent = "";  
-  }
+function clearText() {
+  document.getElementById('inputText').value = "";
+  document.getElementById('output').value = "";
+  window.getSelection().removeAllRanges();
 }
 
 /* MD5 Library */
