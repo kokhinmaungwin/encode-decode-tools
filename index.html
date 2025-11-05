@@ -16,10 +16,10 @@ body {
 }
 .container {
   width: 100%;
-  max-width: 900px; /* desktop limit */
-  margin: 16px auto;
+  max-width: 500px; /* desktop limit */
+  margin: 10px auto;
   background: #fff;
-  padding: 16px;
+  padding: 10px;
   border-radius: 10px;
   box-shadow: 0 6px 18px rgba(0,0,0,0.06);
 }
@@ -38,7 +38,7 @@ textarea#inputText {
 }
 
 /* Buttons row - wraps on small screens */
-.buttons {
+.button {
   display: flex;
   flex-wrap: wrap;
   gap: 8px;
@@ -46,7 +46,7 @@ textarea#inputText {
 }
 
 /* Buttons */
-button.tool-btn {
+button {
   background: #007bff;
   color: #fff;
   padding: 10px 12px;
@@ -57,7 +57,7 @@ button.tool-btn {
   flex: 1 0 auto; /* let them shrink/wrap */
   font-size: 14px;
 }
-button.tool-btn.secondary {
+button:hover {
   background: #6c757d;
 }
 
@@ -65,10 +65,10 @@ button.tool-btn.secondary {
 .result {
   margin-top: 12px;
   background: #0f172a10; /* soft background */
-  padding: 12px;
+  padding: 10px;
   border-radius: 8px;
   min-height: 90px;
-  max-height: 48vh; /* responsive */
+  max-height: 45vh; /* responsive */
   overflow: auto; /* enable scroll inside box */
   white-space: pre-wrap; /* keep newlines */
   word-break: break-word; /* prevent overflow by breaking long words/URLs */
