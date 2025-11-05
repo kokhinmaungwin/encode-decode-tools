@@ -101,7 +101,7 @@ button {
 </div>
 <script>
 function getInput(){ return document.getElementById("inputText").value; }
-function setOutput(data){ document.getElementById("output").innerText = data; }
+function setOutput(data){ document.getElementById("outputText").innerText = data; }
 
 // Base64
 function base64Encode(){ setOutput(btoa(getInput())); }
@@ -153,7 +153,7 @@ function selectAndCopyOutputSilent() {
 // Clear
 function clearText() {
   document.getElementById('inputText').value = "";
-  document.getElementById('output').value = "";
+  document.getElementById('outputText').value = "";
   window.getSelection().removeAllRanges();
 }
 
