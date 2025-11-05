@@ -96,12 +96,12 @@ button {
 <button onclick="toUpperCaseText()">UPPERCASE</button> 
 <button onclick="toLowerCaseText()">lowercase</button> 
 <button onclick="selectAndCopyOutputSilent()">Copy</button>
-<button onclick="clearText()">Clear</button>
+<button onclick="clearAll()">Clear</button>
 <div class="result" id="output"></div>
 </div>
 <script>
 function getInput(){ return document.getElementById("inputText").value; }
-function setOutput(data){ document.getElementById("outputText").innerText = data; }
+function setOutput(data){ document.getElementById("output").innerText = data; }
 
 // Base64
 function base64Encode(){ setOutput(btoa(getInput())); }
@@ -135,7 +135,7 @@ function selectAndCopyOutputSilent() {
 
   if (outputEl.select) {
     outputEl.select();
-    outputEl.setSelectionRange(0, 99999); // mobile support
+    outputEl.setSelectionRange(0, 99999); 
   } else if (window.getSelection) {
     const range = document.createRange();
     range.selectNodeContents(outputEl);
@@ -151,10 +151,11 @@ function selectAndCopyOutputSilent() {
   }
 }
 // Clear
-function clearText() {
-  document.getElementById('inputText').value = "";
-  document.getElementById('outputText').value = "";
-  window.getSelection().removeAllRanges();
+function clearAll() {
+  const inputText = document.getElementById("inputText");
+  const output = document.getElementById("output");
+  if (topText) topText.textContent = "";  
+  if (output) output.textContent = "";    
 }
 
 /* MD5 Library */
