@@ -152,10 +152,9 @@ function selectAndCopyOutputSilent() {
 }
 // Clear
 function clearAll() {
-  const input = document.getElementById("input");
-  const output = document.getElementById("output");
-  if (input) input.textContent = "";  
-  if (output) output.textContent = "";    
+  document.getElementById('input').value = "";
+  document.getElementById('output').value = "";
+  window.getSelection().removeAllRanges();
 }
 
 /* MD5 Library */
