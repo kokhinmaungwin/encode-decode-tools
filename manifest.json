@@ -1,21 +1,21 @@
 {
-  "name": "Encode / Decode Tools",
-  "short_name": "Encode / Decode Tool",
+  "name": "Safe Encoder Decoder",
+  "short_name": "Encoder",
   "start_url": "./",
   "display": "standalone",
-  "background_color": "#f5f7fb",
-  "theme_color": "#0f62fe",
-  "description": "Base64, URL encode, Hex, Unicode escape — Offline PWA",
+  "background_color": "#000000",
+  "theme_color": "#0f0f0f",
+  "scope": "./",
   "icons": [
-  {
-    "src": "icons/icon-192.png",
-    "sizes": "192x192",
-    "type": "image/png"
-  },
-  {
-    "src": "icons/icon-512.png",
-    "sizes": "512x512",
-    "type": "image/png"
-  }
-]
+    {
+      "src": "icons/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "icons/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
 }
