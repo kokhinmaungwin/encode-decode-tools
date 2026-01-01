@@ -9,7 +9,7 @@ A simple web-based tool for encoding and decoding text using various formats inc
 - Base64 encode/decode
 - URL encode/decode
 - Hex encode/decode
-- Unicode escape encode/decode
+- Unicode escape/unescape
 - Copy output to clipboard
 - Clear input and output fields
 - Responsive design for desktop and mobile
