@@ -56,15 +56,6 @@ button:hover{
   border-radius:8px;
   margin-top:10px;
   min-height:100px;
-}
-#installBtn {
-  display: none;
-  margin-top: 5px;
-  padding: 10px 16px;
-  font-size: 16px;
-  border-radius: 8px;
-  border: none;
-  background:#0a0;
-  color: white;
-  cursor: pointer;
+  max-height:150px;
+  overflow-y:auto;
 }
