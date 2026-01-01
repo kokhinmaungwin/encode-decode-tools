@@ -50,7 +50,7 @@ button:hover{
 }
 #result{
   white-space:pre-wrap;
-  background:#111;
+  background:#fff;
   border:1px solid #0f0;
   padding:10px;
   border-radius:8px;
