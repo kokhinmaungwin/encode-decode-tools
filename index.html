@@ -5,6 +5,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Advanced Encode / Decode Tool</title>
 <link rel="stylesheet" href="style.css" />
+<link rel="manifest" href="manifest.webmanifest">
+<meta name="theme-color" content="#0f0f0f">
 </head>
 <body>
 
@@ -36,36 +38,48 @@
 
 <div id="result"></div>
 </div>
-<button id="installBtn">Install App</button>
+<button id="installBtn" style="display:none">Install App</button>
 <script src="main.js"></script>
 <script>
   // --- Register service worker for PWA
-    if('serviceWorker' in navigator){
-      navigator.serviceWorker.register('./sw.js').catch(()=>{/* fail silently */});
+if ("serviceWorker" in navigator) {
+  navigator.serviceWorker.register("service-worker.js")
+  .then(()=>console.log("SW registered"))
+  .catch(e=>console.log("SW failed",e));
+}
+</script>
+<script>
+let deferredPrompt;
+const installBtn = document.getElementById("installBtn");
+
+window.addEventListener("beforeinstallprompt", (e) => {
+  e.preventDefault();
+  deferredPrompt = e;
+
+  // show button
+  installBtn.style.display = "inline-block";
+
+  installBtn.addEventListener("click", async () => {
+    installBtn.disabled = true;
+
+    deferredPrompt.prompt();
+
+    const { outcome } = await deferredPrompt.userChoice;
+
+    if (outcome === "accepted") {
+      console.log("User accepted install");
+    } else {
+      console.log("User dismissed install");
     }
 
-    // --- Install Prompt Handling
-    let deferredPrompt;
-    const installBtn = document.getElementById('installBtn');
+    deferredPrompt = null;
+  });
+});
 
-    window.addEventListener('beforeinstallprompt', (e) => {
-      e.preventDefault();
-      deferredPrompt = e;
-      installBtn.style.display = 'inline-block';
-    });
-
-    installBtn.addEventListener('click', async () => {
-      installBtn.style.display = 'none';
-      if (!deferredPrompt) return;
-      deferredPrompt.prompt();
-      const choiceResult = await deferredPrompt.userChoice;
-      if (choiceResult.outcome === 'accepted') {
-        console.log('User accepted the install prompt');
-      } else {
-        console.log('User dismissed the install prompt');
-      }
-      deferredPrompt = null;
-    });
+// App already installed → hide button
+window.addEventListener("appinstalled", () => {
+  installBtn.style.display = "none";
+});
 </script>
 </body>
 </html>
